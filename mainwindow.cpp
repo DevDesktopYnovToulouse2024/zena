@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     layout->setContentsMargins(300, 100, 300, 300);
 
     QLabel *logoLabel = new QLabel(this);
-    QPixmap logoPixmap("/home/lucas/logo_zena.png");
+    QPixmap logoPixmap("/home/lucas/firstApp/logo_zena.png");
     logoPixmap = logoPixmap.scaled(200, 200, Qt::KeepAspectRatio);
 
     logoLabel->setPixmap(logoPixmap);
