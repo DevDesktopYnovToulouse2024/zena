@@ -6,7 +6,6 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QVBoxLayout>
-#include <QMessageBox>
 #include <QNetworkAccessManager>
 
 class GameWindow : public QMainWindow
@@ -15,7 +14,7 @@ class GameWindow : public QMainWindow
 
 public:
     GameWindow(const QString &username, const QString &password, QWidget *parent = nullptr);
-    ~GameWindow();
+    ~GameWindow() override = default;
 
 private slots:
     void loadGames();

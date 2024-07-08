@@ -54,10 +54,6 @@ GameWindow::GameWindow(const QString &username, const QString &password, QWidget
     loadGames();
 }
 
-GameWindow::~GameWindow()
-{
-}
-
 void GameWindow::loadGames()
 {
     QString apiUrl = QString("https://api.rawg.io/api/games?key=b4da2c8394a949d1a89335b73419c932&page=%1&page_size=6").arg(currentPage);

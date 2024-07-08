@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "gamewindow.h"
+#include "snakewindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -70,9 +71,9 @@ void MainWindow::startGame()
     QString username = usernameLineEdit->text();
     QString password = passwordLineEdit->text();
 
-    if (username == "Lucas" && password == "password") {
-        GameWindow *gameWindow = new GameWindow(username, password);
-        gameWindow->show();
+    if (username == "zena" && password == "password") {
+        auto *snakewindow = new Snakewindow();
+        snakewindow->show();
         close();
     } else {
         attempts++;
