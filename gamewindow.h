@@ -1,13 +1,18 @@
-#ifndef GAMEWINDOW_H
-#define GAMEWINDOW_H
-
+#include "clickablelabel.h"
 #include <QMainWindow>
-#include <QLabel>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QVBoxLayout>
-#include <QMessageBox>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGridLayout>
+#include <QMessageBox>
 
 class GameWindow : public QMainWindow
 {
@@ -24,16 +29,12 @@ private slots:
     void searchGames();
 
 private:
-    int currentPage;
-    QString searchQuery;
-    QNetworkAccessManager *manager;
-    QGridLayout *bodyLayout;
+    QLabel *usernameLabel;
+    QLineEdit *searchField;
     QPushButton *prevButton;
     QPushButton *nextButton;
-    QLineEdit *searchField;
-    QLabel *usernameLabel;
+    QGridLayout *bodyLayout;
+    QNetworkAccessManager *manager;
+    int currentPage;
+    QString searchQuery;
 };
-
-
-#endif // GAMEWINDOW_H
-
