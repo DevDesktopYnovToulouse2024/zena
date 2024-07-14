@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include "snake.h"
+
 namespace Ui {
     class Snakewindow;
 }
@@ -12,10 +14,15 @@ class Snakewindow : public QMainWindow {
 
 public:
     explicit Snakewindow(QWidget *parent = nullptr);
+
     ~Snakewindow() override = default;
 
+private slots:
+    void updateTime(SnakeGame *snake);
+
 private:
-    QLineEdit *usernameLineEdit;
+    QTimer *timer;
+    QGridLayout *grid;
 };
 
 #endif // SNAKEWINDOW_H

@@ -1,6 +1,6 @@
 #include "snake.h"
 
-SnakeGame::SnakeGame(QWidget *parent) {
+SnakeGame::SnakeGame() {
     //allocate the game array
     this->gameGrid = (char *)malloc(sizeof(char) * MAX_X * MAX_Y);
 
@@ -79,6 +79,7 @@ void SnakeGame::loop() {
         HEAD_X = new_X;
         HEAD_Y = new_Y;
         SNAKE_SIZE++;
+        spawnApple();
     } else {
         //if its not on an apple remove the last one
         removeTail();
