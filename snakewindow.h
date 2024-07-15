@@ -18,12 +18,19 @@ public:
     ~Snakewindow() override = default;
 
 private slots:
-    void updateTime(SnakeGame *snake);
+    void updateTime();
 
 private:
     QTimer *timer;
     char *gameGrid;
     QGridLayout *grid;
+    SnakeGame *snake;
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override {
+        snake->keyPressEvent(event);
+        QWidget::keyPressEvent(event);
+    }
 };
 
 #endif // SNAKEWINDOW_H

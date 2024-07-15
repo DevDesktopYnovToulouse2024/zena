@@ -109,13 +109,13 @@ void SnakeGame::keyPressEvent(QKeyEvent *event) {
 
             break;
         case Qt::Key_Up:
-            direction = 1;
+            direction = 3;
             break;
         case Qt::Key_Right:
             direction = 2;
             break;
         case Qt::Key_Down:
-            direction = 3;
+            direction = 1;
             break;
         case Qt::Key_Left:
             direction = 4;

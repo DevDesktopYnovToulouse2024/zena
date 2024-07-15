@@ -21,13 +21,12 @@ public:
     [[nodiscard]] char* getGameGrid() const { return gameGrid; };
     void loadGameMap();
     void loop();
+    void keyPressEvent(QKeyEvent *event) override;
 
 private:
     void spawnApple();
 
     void removeTail();
-
-    void keyPressEvent(QKeyEvent *event) override;
 
     char *gameGrid;
     int score;

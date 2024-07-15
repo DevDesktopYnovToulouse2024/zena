@@ -5,14 +5,13 @@
 #include <QTimer>
 
 Snakewindow::Snakewindow(QWidget *parent)
-    : QMainWindow(parent) {
+    : QMainWindow(parent), snake(new SnakeGame)  {
     auto *centralWidget = new QWidget(this);
 
     grid = new QGridLayout(centralWidget);
     grid->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     grid->setContentsMargins(300, 100, 300, 300);
 
-    auto snake = new SnakeGame();
     snake->loadGameMap();
 
     int maxX = snake->getMaxX();
@@ -38,15 +37,15 @@ Snakewindow::Snakewindow(QWidget *parent)
     }
 
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, [this, snake] { this->updateTime(snake); });
-    timer->start(1000);
+    connect(timer, &QTimer::timeout, this, [this] { this->updateTime(); });
+    timer->start(100);
 
     setCentralWidget(centralWidget);
     setWindowTitle("Game Launcher");
     resize(1500, 1000);
 }
 
-void Snakewindow::updateTime(SnakeGame *snake) {
+void Snakewindow::updateTime() {
     snake->loop();
     int maxX = snake->getMaxX();
     int maxY = snake->getMaxY();
@@ -65,13 +64,13 @@ void Snakewindow::updateTime(SnakeGame *snake) {
                             cellWidget->setStyleSheet("background-color: green;");
                             break;
                         case 2:
-                            cellWidget->setStyleSheet("background-color: blue;");
+                            cellWidget->setStyleSheet("background-color: green;");
                             break;
                         case 3:
-                            cellWidget->setStyleSheet("background-color: yellow;");
+                            cellWidget->setStyleSheet("background-color: green;");
                             break;
                         case 4:
-                            cellWidget->setStyleSheet("background-color: purple;");
+                            cellWidget->setStyleSheet("background-color: green;");
                             break;
                         case 5:
                             cellWidget->setStyleSheet("background-color: red;");
