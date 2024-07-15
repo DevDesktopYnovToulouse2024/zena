@@ -22,6 +22,7 @@ private slots:
 
 private:
     QTimer *timer;
+    char *gameGrid;
     QGridLayout *grid;
 };
 

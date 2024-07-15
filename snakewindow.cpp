@@ -14,11 +14,10 @@ Snakewindow::Snakewindow(QWidget *parent)
 
     auto snake = new SnakeGame();
     snake->loadGameMap();
-    snake->loop();
 
     int maxX = snake->getMaxX();
     int maxY = snake->getMaxY();
-    char *gameGrid = snake->getGameGrid();
+    gameGrid = snake->getGameGrid();
 
     for (int row = maxY - 1; row >= 0; --row) {
         for (int col = maxX - 1; col >= 0; --col) {
@@ -51,7 +50,6 @@ void Snakewindow::updateTime(SnakeGame *snake) {
     snake->loop();
     int maxX = snake->getMaxX();
     int maxY = snake->getMaxY();
-    char *gameGrid = snake->getGameGrid();
 
     for (int row = maxY - 1; row >= 0; --row) {
         for (int col = maxX - 1; col >= 0; --col) {
@@ -60,15 +58,25 @@ void Snakewindow::updateTime(SnakeGame *snake) {
                 QLabel* cellWidget = qobject_cast<QLabel*>(item->widget());
                 if (cellWidget) {
                     cellWidget->setFixedSize(25, 25);
-                    cellWidget->setStyleSheet("border: 1px solid white;");
+                    cellWidget->setStyleSheet("border: 1px solid white;background-color: none;");
 
-                    if (gameGrid[col + row * maxX] != 0 && gameGrid[col + row * maxX] != 5) {
-                        cellWidget->setStyleSheet("background-color: green;");
-                    }
-
-                    if (gameGrid[col + row * maxX] == 5) {
-                        cellWidget->setStyleSheet("background-color: red;");
-                    }
+                    switch (gameGrid[col + row * maxX]) {
+                        case 1:
+                            cellWidget->setStyleSheet("background-color: green;");
+                            break;
+                        case 2:
+                            cellWidget->setStyleSheet("background-color: blue;");
+                            break;
+                        case 3:
+                            cellWidget->setStyleSheet("background-color: yellow;");
+                            break;
+                        case 4:
+                            cellWidget->setStyleSheet("background-color: purple;");
+                            break;
+                        case 5:
+                            cellWidget->setStyleSheet("background-color: red;");
+                            break;
+                        }
                 }
             }
         }

@@ -47,7 +47,7 @@ void SnakeGame::removeTail() {
             break;
         }
     }
-    gameGrid[x + y * MAX_X] = direction;
+    gameGrid[x + y * MAX_X] = 0;
 }
 
 void SnakeGame::loop() {
@@ -68,6 +68,7 @@ void SnakeGame::loop() {
             break;
     }
 
+
     //check if out of bounds
     if (new_X <= 0 || new_X >= MAX_X || new_Y <= 0 || new_Y >= MAX_Y) {
         //lose game
@@ -79,13 +80,15 @@ void SnakeGame::loop() {
         HEAD_X = new_X;
         HEAD_Y = new_Y;
         SNAKE_SIZE++;
+        gameGrid[HEAD_X + HEAD_Y * MAX_X] = direction;
         spawnApple();
     } else {
         //if its not on an apple remove the last one
+        HEAD_X = new_X;
+        HEAD_Y = new_Y;
+        gameGrid[HEAD_X + HEAD_Y * MAX_X] = direction;
         removeTail();
     };
-
-    gameGrid[HEAD_X + HEAD_Y * MAX_X] = direction;
 }
 
 void SnakeGame::spawnApple() {
@@ -103,6 +106,7 @@ void SnakeGame::keyPressEvent(QKeyEvent *event) {
     switch (event->key()) {
         case Qt::Key_Escape:
             //exit the game
+
             break;
         case Qt::Key_Up:
             direction = 1;

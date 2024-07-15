@@ -35,7 +35,7 @@ private:
     int MAX_Y = 20;
     int HEAD_X;
     int HEAD_Y;
-    int SNAKE_SIZE = 0;
+    int SNAKE_SIZE = 1;
     int direction;
 };
 
