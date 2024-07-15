@@ -50,7 +50,7 @@ void SnakeGame::removeTail() {
     gameGrid[x + y * MAX_X] = 0;
 }
 
-void SnakeGame::loop() {
+int SnakeGame::loop() {
     //add segment in front of head
     int new_X = HEAD_X, new_Y = HEAD_Y;
     switch (direction) {
@@ -70,9 +70,9 @@ void SnakeGame::loop() {
 
 
     //check if out of bounds
-    if (new_X <= 0 || new_X >= MAX_X || new_Y <= 0 || new_Y >= MAX_Y) {
-        //lose game
-        return;
+    if (new_X < 0 || new_X >= MAX_X || new_Y < 0 || new_Y >= MAX_Y ||
+        (gameGrid[new_X + new_Y * MAX_X] != 0 && gameGrid[new_X + new_Y * MAX_X] != 5)) {
+        return -1;
     }
 
     if (gameGrid[new_X + new_Y * MAX_X] == 5) {
@@ -89,6 +89,7 @@ void SnakeGame::loop() {
         gameGrid[HEAD_X + HEAD_Y * MAX_X] = direction;
         removeTail();
     };
+    return 0;
 }
 
 void SnakeGame::spawnApple() {
@@ -109,16 +110,24 @@ void SnakeGame::keyPressEvent(QKeyEvent *event) {
 
             break;
         case Qt::Key_Up:
-            direction = 3;
+            if (gameGrid[HEAD_X + HEAD_Y * MAX_X] != 1) {
+                direction = 3;
+            }
             break;
         case Qt::Key_Right:
-            direction = 2;
+            if (gameGrid[HEAD_X + HEAD_Y * MAX_X] != 4) {
+                direction = 2;
+            }
             break;
         case Qt::Key_Down:
-            direction = 1;
+            if (gameGrid[HEAD_X + HEAD_Y * MAX_X] != 3) {
+                direction = 1;
+            }
             break;
         case Qt::Key_Left:
-            direction = 4;
+            if (gameGrid[HEAD_X + HEAD_Y * MAX_X] != 2) {
+                direction = 4;
+            }
             break;
     }
 }

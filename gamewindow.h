@@ -1,3 +1,7 @@
+#pragma once
+#ifndef GAME_WINDOW_H
+#define GAME_WINDOW_H
+
 #include "clickablelabel.h"
 #include <QMainWindow>
 #include <QNetworkAccessManager>

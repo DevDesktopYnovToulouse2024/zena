@@ -1,6 +1,8 @@
 #include "gamewindow.h"
 #include "snakewindow.h"
 #include "snake.h"
+#include <iostream>
+#include <string>
 
 #include <QTimer>
 
@@ -46,7 +48,11 @@ Snakewindow::Snakewindow(QWidget *parent)
 }
 
 void Snakewindow::updateTime() {
-    snake->loop();
+    if (snake->loop() == -1) {
+        QMessageBox::information(this, "Snake Game", "You lose ! D: \nYour score was : " + QString::fromStdString(std::to_string(snake->getScore())));
+        timer->stop();
+        close();
+    }
     int maxX = snake->getMaxX();
     int maxY = snake->getMaxY();
 

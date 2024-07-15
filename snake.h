@@ -19,8 +19,9 @@ public:
     [[nodiscard]] int getHeadX() const { return HEAD_X; };
     [[nodiscard]] int getHeadY() const { return HEAD_Y; };
     [[nodiscard]] char* getGameGrid() const { return gameGrid; };
+    [[nodiscard]] int getScore() const { return SNAKE_SIZE * 161; };
     void loadGameMap();
-    void loop();
+    int loop();
     void keyPressEvent(QKeyEvent *event) override;
 
 private:
@@ -29,7 +30,6 @@ private:
     void removeTail();
 
     char *gameGrid;
-    int score;
     int MAX_X = 20;
     int MAX_Y = 20;
     int HEAD_X;

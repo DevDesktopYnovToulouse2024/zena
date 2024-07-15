@@ -1,5 +1,6 @@
 #include "gamewindow.h"
 #include "clickablelabel.h"
+#include "snakewindow.h"
 
 GameWindow::GameWindow(const QString &username, const QString &password, QWidget *parent)
     : QMainWindow(parent), currentPage(1), searchQuery("")
@@ -110,7 +111,10 @@ void GameWindow::loadGames()
                         });
 
                         connect(imageLabel, &ClickableLabel::clicked, this, [=]() {
-                            QMessageBox::information(this, "Game Clicked", "You clicked on: " + gameName);
+                            if (gameName == "Snake.") {
+                                auto *snakewindow = new Snakewindow();
+                                snakewindow->show();
+                            }
                         });
                     }
                 }
