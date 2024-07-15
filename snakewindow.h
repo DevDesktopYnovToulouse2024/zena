@@ -25,6 +25,7 @@ private:
     char *gameGrid;
     QGridLayout *grid;
     SnakeGame *snake;
+    QLabel *scoreLabel;
 
 protected:
     void keyPressEvent(QKeyEvent *event) override {

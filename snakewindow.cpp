@@ -7,9 +7,10 @@
 #include <QTimer>
 
 Snakewindow::Snakewindow(QWidget *parent)
-    : QMainWindow(parent), snake(new SnakeGame)  {
+    : QMainWindow(parent), snake(new SnakeGame), scoreLabel(new QLabel(this))  {
     auto *centralWidget = new QWidget(this);
 
+    auto *mainLayout = new QVBoxLayout(centralWidget);
     grid = new QGridLayout(centralWidget);
     grid->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     grid->setContentsMargins(300, 100, 300, 300);
@@ -38,6 +39,14 @@ Snakewindow::Snakewindow(QWidget *parent)
         }
     }
 
+    scoreLabel->setAlignment(Qt::AlignCenter);
+    QFont font = scoreLabel->font();
+    font.setPointSize(16);
+    scoreLabel->setFont(font);
+
+    mainLayout->addWidget(scoreLabel);
+    mainLayout->addLayout(grid);
+
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, [this] { this->updateTime(); });
     timer->start(100);
@@ -55,6 +64,8 @@ void Snakewindow::updateTime() {
     }
     int maxX = snake->getMaxX();
     int maxY = snake->getMaxY();
+
+    scoreLabel->setText("Score: " + QString::fromStdString(std::to_string(snake->getScore())));
 
     for (int row = maxY - 1; row >= 0; --row) {
         for (int col = maxX - 1; col >= 0; --col) {
