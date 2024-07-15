@@ -56,7 +56,7 @@ MainWindow::MainWindow(QWidget *parent)
     layout->addWidget(startButton);
 
     setCentralWidget(centralWidget);
-    setWindowTitle("Game Launcher");
+    setWindowTitle("Zena Launcher");
     resize(1500,1000);
 }
 

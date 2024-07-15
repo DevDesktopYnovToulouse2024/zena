@@ -52,7 +52,7 @@ Snakewindow::Snakewindow(QWidget *parent)
     timer->start(100);
 
     setCentralWidget(centralWidget);
-    setWindowTitle("Game Launcher");
+    setWindowTitle("Snake");
     resize(1500, 1000);
 }
 

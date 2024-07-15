@@ -5,7 +5,7 @@
 GameWindow::GameWindow(const QString &username, const QString &password, QWidget *parent)
     : QMainWindow(parent), currentPage(1), searchQuery("")
 {
-    setWindowTitle("Game Window");
+    setWindowTitle("Zena Launcher");
     resize(800, 600);
 
     QWidget *topBar = new QWidget(this);

@@ -19,7 +19,7 @@ public:
     [[nodiscard]] int getHeadX() const { return HEAD_X; };
     [[nodiscard]] int getHeadY() const { return HEAD_Y; };
     [[nodiscard]] char* getGameGrid() const { return gameGrid; };
-    [[nodiscard]] int getScore() const { return SNAKE_SIZE * 161; };
+    [[nodiscard]] int getScore() const { return (SNAKE_SIZE - 1) * 161; };
     void loadGameMap();
     int loop();
     void keyPressEvent(QKeyEvent *event) override;
