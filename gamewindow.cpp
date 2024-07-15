@@ -25,7 +25,23 @@ GameWindow::GameWindow(const QString &username, const QString &password, QWidget
 
     QString topBarStyle = "QWidget {"
                           "    background-color: #4CAF50;"
+                          "}"
+                          "QLineEdit {"
+                          "    border: 1px solid #ccc;"
+                          "    border-radius: 5px;"
+                          "    padding: 5px;"
+                          "}"
+                          "QPushButton {"
+                          "    border: none;"
+                          "    background-color: #8BC34A;"
+                          "    color: white;"
+                          "    padding: 5px 10px;"
+                          "    border-radius: 5px;"
+                          "}"
+                          "QPushButton:hover {"
+                          "    background-color: #7CB342;"
                           "}";
+
     topBar->setStyleSheet(topBarStyle);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
@@ -83,7 +99,12 @@ void GameWindow::loadGames()
                         QString gameName = gameObj["name"].toString();
 
                         ClickableLabel *imageLabel = new ClickableLabel(this);
+                        imageLabel->setStyleSheet("border-radius: 10px; border: 1px solid #ccc; "
+                                                  "box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);");
+                        imageLabel->setAlignment(Qt::AlignCenter);
                         QLabel *nameLabel = new QLabel(gameName);
+                        nameLabel->setAlignment(Qt::AlignCenter);
+                        nameLabel->setStyleSheet("font-weight: bold;");
 
                         int row = i / 3;
                         int col = i % 3;
