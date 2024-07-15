@@ -34,6 +34,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         gamewindow.ui
         gamecatalog.ui
         snakewindow.h snakewindow.cpp snakewindow.ui
+        clickablelabel.h clickablelabel.cpp
 
     )
 # Define target properties for Android with Qt 6 as:

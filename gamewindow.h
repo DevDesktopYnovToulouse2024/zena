@@ -1,12 +1,18 @@
-#ifndef GAMEWINDOW_H
-#define GAMEWINDOW_H
-
+#include "clickablelabel.h"
 #include <QMainWindow>
-#include <QLabel>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QVBoxLayout>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGridLayout>
+#include <QMessageBox>
 
 class GameWindow : public QMainWindow
 {

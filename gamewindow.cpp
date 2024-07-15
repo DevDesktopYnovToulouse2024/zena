@@ -1,10 +1,5 @@
 #include "gamewindow.h"
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QUrl>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonArray>
+#include "clickablelabel.h"
 
 GameWindow::GameWindow(const QString &username, const QString &password, QWidget *parent)
     : QMainWindow(parent), currentPage(1), searchQuery("")
@@ -84,8 +79,10 @@ void GameWindow::loadGames()
                     for (int i = 0; i < gamesArray.size(); ++i) {
                         QJsonObject gameObj = gamesArray[i].toObject();
                         QString imageUrl = gameObj["background_image"].toString();
-                        QLabel *imageLabel = new QLabel(this);
-                        QLabel *nameLabel = new QLabel(gameObj["name"].toString());
+                        QString gameName = gameObj["name"].toString();
+
+                        ClickableLabel *imageLabel = new ClickableLabel(this);
+                        QLabel *nameLabel = new QLabel(gameName);
 
                         int row = i / 3;
                         int col = i % 3;
@@ -110,6 +107,10 @@ void GameWindow::loadGames()
                                 qDebug() << "Error:" << reply->errorString();
                             }
                             reply->deleteLater();
+                        });
+
+                        connect(imageLabel, &ClickableLabel::clicked, this, [=]() {
+                            QMessageBox::information(this, "Game Clicked", "You clicked on: " + gameName);
                         });
                     }
                 }
